@@ -1,0 +1,595 @@
+@-webkit-keyframes spinAround {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+@keyframes spinAround {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        mobile -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+#prshop {
+    margin-top: 1px;
+    margin-bottom: 1px;
+    white-space: normal;
+    line-height: normal;
+    width: 100%;
+}
+#pricon {
+    max-height: 3em !important;
+    margin-left: 0px;
+    vertical-align: middle;
+}
+#payrightLogo {
+    /* height: auto;
+  width: 30%;*/
+    /*  display: -webkit-inline-box;
+  float: none;*/
+    /*display: inline-block;*/
+    float: none !important;
+    vertical-align: middle !important;
+    content: url('../../images/payrightlogo_rgb.png');
+    max-width: 40%;
+    max-height: 2.5em !important;
+}
+
+#productPayrightLogo{
+    content: url('../../images/payrightlogo_rgb.png');
+    max-height: 3em !important;
+    vertical-align: middle !important;
+    display: inline-block !important;
+    border: 0px !important;
+}
+
+#payrightLogoimg {
+    display: inline-block !important;
+    float: none !important;
+    vertical-align: middle !important;
+    max-width: 40%;
+    max-height: 2.5em !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+
+#productPayrightLogoImg {
+    max-height: 3em !important;
+    vertical-align: middle !important;
+    display: inline-block !important;
+    border: 0px !important;
+}
+
+#payrightshopinstallment {
+    font-size: 12px;
+    color: inherit;
+    margin-top: 0px;
+    /* display: -webkit-box;*/
+}
+#opener {
+    color: #275f95;
+    text-decoration: underline;
+       cursor: pointer;
+}
+
+ h1.payRightH1, h2.payRightH2, h3.payRightH3, h4.payRightH4, h5.payRightH5, h6.payRightH6, {
+    margin: 0;
+    padding: 0;
+}
+.prshop {
+    text-align: -webkit-center;
+    color: #316fa9;
+    display: -webkit-box;
+}
+.order-status .status-shipped {
+    color: white;
+    background-color: green;
+}
+
+/* payRight_container */
+
+.payRight_container {
+    margin: 0 auto;
+    position: relative;
+}
+@media screen and (min-width: 1088px) {
+    .payRight_container {
+        max-width: 960px;
+        width: 960px;
+    }
+    .payRight_container.is-fluid {
+        margin-left: 64px;
+        margin-right: 64px;
+        max-width: none;
+        width: auto;
+    }
+}
+@media screen and (max-width: 1279px) {
+    .payRight_container.is-widescreen {
+        max-width: 1152px;
+        width: auto;
+    }
+    .modal-content {
+        max-width: 1152px;
+        width: auto;
+        padding: 20px;
+    }
+}
+@media screen and (max-width: 1471px) {
+    .payRight_container.is-fullhd {
+        max-width: 1344px;
+        width: auto;
+    }
+    .modal-content {
+        max-width: 1152px;
+        width: auto;
+        padding: 20px;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .payRight_container {
+        max-width: 1152px;
+        width: 1152px;
+    }
+    .modal-content {
+        max-width: 1152px;
+        width: auto;
+        padding: 20px;
+    }
+}
+@media screen and (min-width: 1472px) {
+    .payRight_container {
+        max-width: 1344px;
+        width: 1344px;
+    }
+    .modal-content {
+        max-width: 1152px;
+        width: auto;
+        padding: 20px;
+    }
+}
+#payrightis5 {
+    width: 100%;
+    padding-bottom: 0.75em;
+    padding-top: 0.75em;
+}
+/*for payRight_columns */
+
+.payRight_columns {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+    margin-top: -0.75rem;
+}
+.payRight_columns:last-child {
+    margin-bottom: -0.75rem;
+}
+/**/
+
+.payRight_columns:not(:last-child) {
+    margin-bottom: calc(1.5rem - 0.75rem);
+}
+.payRight_columns.is-centered {
+    justify-content: center;
+}
+.payRight_columns.is-vcentered {
+    align-items: center;
+}
+.payRight_columns.is-gapless {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+}
+.payRight_columns.is-gapless>.insideColumns {
+    margin: 0;
+    padding: 0 !important;
+}
+.payRight_columns.is-gapless:not(:last-child) {
+    margin-bottom: 1.5rem;
+}
+.payRight_columns.is-gapless:last-child {
+    margin-bottom: 0;
+}
+.payRight_columns.is-mobile {
+    display: flex;
+}
+.payRight_columns.is-multiline {
+    flex-wrap: wrap;
+}
+.payRight_columns.is-vcentered {
+    align-items: center;
+}
+@media screen and (min-width: 769px), print {
+    .payRight_columns:not(.is-desktop) {
+        display: flex;
+    }
+}
+@media screen and (min-width: 1088px) {
+    .payRight_columns.is-desktop {
+        display: flex;
+        margin-bottom: 0px;
+    }
+}
+.payRight_columns.is-mobile>.insideColumns.payRight_is-3 {
+    flex: none;
+    width: 25%;
+}
+.payRight_columns.is-mobile>.insideColumns.payRight_is-5 {
+    flex: none;
+    width: 41.66667%;
+}
+.payRight_columns.is-mobile>.insideColumns.payRight_is-offset-1 {
+    margin-left: 8.33333%;
+}
+.payRight_columns.is-mobile>.insideColumns.is-offset-5 {
+    margin-left: 41.66667%;
+}
+.payRight_columns.is-mobile>.insideColumns.payRight_is-one-third {
+    flex: none;
+    width: 33.3333%;
+}
+.payRight_columns.is-mobile>.insideColumns.payRight_is-offset-one-third {
+    margin-left: 33.3333%;
+}
+.payRight_columns.is-mobile>.insideColumns.payRight_is-8 {
+    flex: none;
+    width: 100%;
+}
+.payRight_columns.is-mobile>.insideColumns.payRight_is-5 {
+    flex: none;
+    width: 41.66667%;
+}
+a.tellmemore {
+    color: white;
+    text-decoration-line: none;
+}
+/* insideColumns*/
+
+.insideColumns {
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 0.75rem;
+}
+.payRight_columns.is-mobile>.insideColumns.payRight_is-three-quarters {
+    flex: none;
+    width: 75%;
+}
+.payRight_columns.payRight_is-mobile>.insideColumns.payRight_is-4 {
+    flex: none;
+    width: 33.33333%;
+}
+@media screen and (max-width: 768px) {
+    .insideColumns.payRight_is-three-quarters-mobile {
+        flex: none;
+        width: 75%;
+    }
+    .insideColumns.payRight_is-three-quarters-mobile {
+        flex: none;
+        width: 75%;
+    }
+    .insideColumns.payRight_is-5-mobile {
+        flex: none;
+        width: 41.66667%;
+    }
+    .insideColumns.payRight_is-offset-1-mobile {
+        margin-left: 8.33333%;
+    }
+    .insideColumns.payRight_is-offset-one-third-mobile {
+        margin-left: 33.3333%;
+    }
+    .insideColumns.payRight_is-one-third-mobile {
+        flex: none;
+        width: 33.3333%;
+    }
+    .insideColumns.payRight_is-offset-1-mobile {
+        margin-left: 8.33333%;
+    }
+    .insideColumns.payRight_is-3-mobile {
+        margin-left: 25%;
+    }
+    .insideColumns.payRight_is-8-mobile {
+        flex: none;
+        width: 100%;
+    }
+    .insideColumns.payRight_is-4-mobile {
+        flex: none;
+        width: 33.33333%;
+    }
+    .insideColumns {
+        padding-top: 0px;
+    }
+    #payrightis5 {
+        width: 100%;
+        margin-bottom: 0.75em;
+        margin-top: 0.75em;
+    }
+    #payrightis8 {
+        padding-left: 0.75rem;
+    }
+}
+@media screen and (min-width: 769px), print {
+    #payrightis8 {
+        padding-left: 0px;
+    }
+    .insideColumns.payRight_is-three-quarters, .insideColumns.payRight_is-three-quarters-tablet {
+        flex: none;
+        width: 75%;
+    }
+    .insideColumns.payRight_is-5, .insideColumns.payRight_is-5-tablet {
+        flex: none;
+        width: 41.66667%;
+        /*new*/
+        padding: 0px;
+    }
+    .insideColumns.payRight_is-offset-1, .insideColumns.payRight_is-offset-1-tablet {
+        margin-left: 8.33333%;
+    }
+    .insideColumns.payRight_is-offset-one-third, .insideColumns.payRight_is-offset-one-third-tablet {
+        margin-left: 33.3333%;
+    }
+    .insideColumns.payRight_is-one-third, .insideColumns.payRight_is-one-third-tablet {
+        flex: none;
+        width: 33.3333%;
+    }
+    .insideColumns.payRight_is-3-tablet, .payRight_is-3-tablet {
+        flex: none;
+        /*check*/
+        margin-left: 25%;
+        width: 25%
+    }
+    .insideColumns.payRight_is-8, .insideColumns.payRight_is-8-tablet {
+        flex: none;
+        width: 100%;
+    }
+    .insideColumns.payRight_is-3, .insideColumns.payRight_is-3-tablet {
+        flex: none;
+        width: 25%;
+    }
+    .insideColumns.payRight_is-4, .insideColumns.payRight_is-4-tablet {
+        flex: none;
+        width: 33.33333%;
+    }
+    /*new*/
+}
+@media screen and (max-width: 1087px) {
+    .insideColumns.payRight_is-three-quarters-touch {
+        flex: none;
+        width: 75%;
+    }
+    .insideColumns.payRight_is-5-touch {
+        flex: none;
+        width: 41.66667%;
+    }
+    .insideColumns.payRight_is-offset-1-touch {
+        margin-left: 8.33333%;
+    }
+    .insideColumns.payRight_is-offset-one-third-touch {
+        margin-left: 33.3333%;
+    }
+    .insideColumns.payRight_is-one-third-touch {
+        flex: none;
+        width: 33.3333%;
+    }
+    .insideColumns.payRight_is-3-touch {
+        flex: none;
+        width: 25%;
+    }
+    .insideColumns.payRight_is-8-touch {
+        flex: none;
+        width: 100%;
+    }
+    .insideColumns.payRight_is-4-touch {
+        flex: none;
+        width: 33.33333%;
+    }
+}
+@media screen and (min-width: 1088px) {
+    .insideColumns.payRight_is-three-quarters-desktop {
+        flex: none;
+        width: 75%;
+    }
+    .insideColumns.payRight_is-5-desktop {
+        flex: none;
+        width: 41.66667%;
+    }
+    .insideColumns.payRight_is-offset-1-desktop {
+        margin-left: 8.33333%;
+    }
+    .insideColumns.payRight_is-offset-one-third-desktop {
+        margin-left: 33.3333%;
+    }
+    .insideColumns.payRight_is-one-third-desktop {
+        flex: none;
+        width: 33.3333%;
+    }
+    .insideColumns.payRight_is-3-desktop {
+        flex: none;
+        width: 25%;
+    }
+    .insideColumns.payRight_is-8-desktop {
+        flex: none;
+        width: 100%;
+    }
+    .insideColumns.payRight_is-4-desktop {
+        flex: none;
+        width: 33.33333%;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .insideColumns.payRight_is-three-quarters-widescreen {
+        flex: none;
+        width: 75%;
+    }
+    .insideColumns.payRight_is-5-widescreen {
+        flex: none;
+        width: 41.66667%;
+    }
+    .insideColumns.payRight_is-offset-1-widescreen {
+        margin-left: 8.33333%;
+    }
+    .insideColumns.payRight_is-offset-one-third-widescreen {
+        margin-left: 33.3333%;
+    }
+    .insideColumns.payRight_is-one-third-widescreen {
+        flex: none;
+        width: 33.3333%;
+    }
+    .insideColumns.payRight_is-widescreen {
+        flex: none;
+        width: 25%;
+    }
+    .insideColumns.payRight_is-8-widescreen {
+        flex: none;
+        width: 100%;
+    }
+    .insideColumns.payRight_is-4-widescreen {
+        flex: none;
+        width: 33.33333%;
+    }
+}
+@media screen and (min-width: 1472px) {
+    .insideColumns.payRight_is-three-quarters-fullhd {
+        flex: none;
+        width: 75%;
+    }
+    .insideColumns.payRight_is-5-fullhd {
+        flex: none;
+        width: 41.66667%;
+    }
+    .insideColumns.payRight_is-offset-1-fullhd {
+        margin-left: 8.33333%;
+    }
+    .insideColumns.payRight_is-offset-one-third-fullhd {
+        margin-left: 33.3333%;
+    }
+    .insideColumns.payRight_is-one-third-fullhd {
+        flex: none;
+        width: 33.3333%;
+    }
+    .insideColumns.payRight_is-3-fullhd {
+        flex: none;
+        width: 25%;
+    }
+    .insideColumns.payRight_is-8-fullhd {
+        flex: none;
+        width: 100%;
+    }
+    .insideColumns.payRight_is-4-fullhd {
+        flex: none;
+        width: 33.33333%;
+    }
+}
+/*from bulma.css in the fixed version*/
+
+/*.columns.is-mobile > .column.is-offset-4 {
+  margin-left: 33.33333%;
+}*/
+
+/* The Modal (background) */
+
+.payrightmodal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1050;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+.modalopener {
+    color: red;
+}
+/* Modal Content */
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    height: auto;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+/* Add Animation */
+
+@-webkit-keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+#close {
+    text-align: right;
+}
+/* The Close Button */
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+.modal-body {
+    padding: 2px 16px;
+    height: auto;
+    width: auto;
+    margin: 10px;
+}
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
