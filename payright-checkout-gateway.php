@@ -25,7 +25,7 @@
 
 // defined('ABSPATH') or exit;
 
-if ( !defined( 'ABSPATH' )) {
+if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
@@ -75,19 +75,19 @@ function payright_shop_installments($price, $product)
         $product_price = $product;
     }
 
-    $type     = $product->get_type();
+    $type = $product->get_type();
     $currency = get_woocommerce_currency();
     $image_url = plugin_dir_url(__FILE__) . 'woocommerce/images/payrightlogo_rgb.png';
 
-    $theme_options      = get_option('woocommerce_payright_gateway_settings');
-    $enabled            = $theme_options['enabled'];
-    $minamount          = (float) $theme_options['minamount'];
+    $theme_options = get_option('woocommerce_payright_gateway_settings');
+    $enabled = $theme_options['enabled'];
+    $minamount = (float) $theme_options['minamount'];
     $product_instalments = $theme_options['installments'];
 
     if (($type == "simple" || $type == "variable") && !is_admin()) {
 
-        $listinstallments          = $theme_options['listinstallments'];
-        $front_page_instalments      = $theme_options['frontinstallments'];
+        $listinstallments = $theme_options['listinstallments'];
+        $front_page_instalments = $theme_options['frontinstallments'];
         $related_product_instalments = $theme_options['relatedinstallments'];
 
         if (($enabled == 'yes') && ($product_price >= $minamount) && ($currency == "AUD")) {
@@ -156,11 +156,18 @@ function payright_modal_footer()
 // unsets payright_gateway
 function payright_filter_gateways($gateway_list)
 {
-    $cart_total    = (float) WC()->cart->total;
+    if (WC()->cart->total === 0) {
+        $orderId = get_query_var('order-pay');
+        $order = wc_get_order($orderId);
+        $cart_total = $order->get_total();
+    } else {
+        $cart_total = WC()->cart->total;
+    }
+
     $theme_options = get_option('woocommerce_payright_gateway_settings');
-    $minamount     = (float) $theme_options['minamount'];
-    $enabled       = $theme_options['enabled'];
-    $currency      = get_woocommerce_currency();
+    $minamount = (float) $theme_options['minamount'];
+    $enabled = $theme_options['enabled'];
+    $currency = get_woocommerce_currency();
 
     if ($enabled != 'yes' && $currency != 'AUD') {
         unset($gateway_list['payright_gateway']);
@@ -174,7 +181,7 @@ function payright_filter_gateways($gateway_list)
             unset($gateway_list['payright_gateway']);
         } else {
 
-            $result                   = Payright_Call::payright_calculate_single_product_installment($cart_total);
+            $result = Payright_Call::payright_calculate_single_product_installment($cart_total);
             $transaction_configuration = Payright_Call::payright_transaction_configuration($intiliaze_configuration_transaction['payrightAccessToken']);
 
             if (($cart_total < $minamount || $currency != 'AUD' || ($result == false))) {
@@ -231,7 +238,7 @@ function payright_scripts()
     wp_enqueue_script('payrightpayment', plugins_url('/woocommerce/assets/js/payrightpayment.js', __FILE__), array(), '1.0.0', 'true');
 
     $theme_options = get_option('woocommerce_payright_gateway_settings');
-    $cssoverride   = $theme_options['moduleOverride'];
+    $cssoverride = $theme_options['moduleOverride'];
 
     $js_class = array(
 
@@ -250,8 +257,8 @@ function payright_styles()
     wp_enqueue_style('prpopup', plugins_url('woocommerce/assets/css/payright-modal.css', __FILE__), array(), '1.0.0', 'all');
 
     $theme_options = get_option('woocommerce_payright_gateway_settings');
-    $custom_css     = '';
-    $custom_css     = $theme_options['customCss'];
+    $custom_css = '';
+    $custom_css = $theme_options['customCss'];
 
     wp_add_inline_style('payright_style_main', $custom_css, 'after');
 }
@@ -304,23 +311,23 @@ function payright_wc_locate_template($template, $template_name, $template_path)
 function payright_redirect($request)
 {
     global $woocommerce;
-    $url        = "";
-   
+    $url = "";
+
     if (!empty($_GET['ecommtoken'])) {
         $ecommtoken = ($_GET['ecommtoken']);
-        $json   = Payright_Call::payright_get_plan_data_by_token($ecommtoken);
+        $json = Payright_Call::payright_get_plan_data_by_token($ecommtoken);
         $result = json_decode($json->transactionResult);
 
-        $transdata      = json_decode($json->transactionData);
+        $transdata = json_decode($json->transactionData);
         $woo_order_number = $transdata->woocommerceordernumber;
-        $order          = wc_get_order($woo_order_number);
+        $order = wc_get_order($woo_order_number);
 
         if (!empty($result) && isset($result->prtransactionStatus)) {
             if (isset($result->planData)) {
 
-                $plan_name          = $result->planData->name;
-                $planid            = $result->planData->id;
-                $plan_status        = $result->planData->status;
+                $plan_name = $result->planData->name;
+                $planid = $result->planData->id;
+                $plan_status = $result->planData->status;
                 $transaction_status = $result->prtransactionStatus;
             }
 
@@ -340,9 +347,8 @@ function payright_redirect($request)
 
                 if (isset($plan_id_for_cancel) && $transaction_status != "Declined") {
                     Payright_Call::payright_cancel_plan($plan_id_for_cancel);
-                   
-                }
 
+                }
 
                 $url = $order->get_cancel_order_url_raw();
                 if (!isset(WC()->session)) {
@@ -374,7 +380,7 @@ add_action('rest_api_init', function () {
         'api/v1',
         '/payrightresponse',
         array(
-            'methods'  => WP_REST_Server::READABLE,
+            'methods' => WP_REST_Server::READABLE,
             'callback' => 'payright_redirect',
         )
     );
@@ -408,9 +414,9 @@ function payright_order_details_plan_id($order)
     <?php
 global $post;
 
-    $id          = $order->get_id();
+    $id = $order->get_id();
     $is_payright = get_post_meta($id, '_payment_method', true);
-    $plan_name    = get_post_meta($id, '_payright_plan_name', true);
+    $plan_name = get_post_meta($id, '_payright_plan_name', true);
 
     if (($is_payright == 'payright_gateway') && (!empty($plan_name))):
     ?>
@@ -440,13 +446,13 @@ function payright_admin_notices()
     } else {
         $order_id = '';
     }
-    $order         = wc_get_order($order_id);
+    $order = wc_get_order($order_id);
     $payment_method = get_post_meta($order_id, '_payment_method', true);
     if ($status == "wc-completed") {
         if ($payment_method == "payright_gateway") {
             $planname = get_post_meta($order_id, '_payright_plan_name', true);
 
-            $json   = Payright_Call::payright_query_transaction($planname);
+            $json = Payright_Call::payright_query_transaction($planname);
             $result = $json->data;
 
             // Check if the custom field has a value.
@@ -481,10 +487,10 @@ add_action('current_screen', 'payright_current_screen');
 add_action('admin_notices', 'payright_check_config');
 function payright_check_config()
 {
-    $theme_options    = get_option('woocommerce_payright_gateway_settings');
-    $enabled          = $theme_options['enabled'];
+    $theme_options = get_option('woocommerce_payright_gateway_settings');
+    $enabled = $theme_options['enabled'];
     $merchantusername = $theme_options['merchantusername'];
-    $username         = $theme_options['username'];
+    $username = $theme_options['username'];
 
     if ($enabled == 'yes') {
         try {
@@ -527,11 +533,11 @@ function wc_payright_gateway_init()
          */
         public function __construct()
         {
-            $this->id                 = 'payright_gateway';
-            $this->icon               = apply_filters('woocommerce_payright_icon', '');
-            $this->has_fields         = false;
-            $this->title              = __('Payright - Interest Free Payments', 'wc-gateway-payright');
-            $this->method_title       = __('Payright - Interest Free Payments', 'wc-gateway-payright');
+            $this->id = 'payright_gateway';
+            $this->icon = apply_filters('woocommerce_payright_icon', '');
+            $this->has_fields = false;
+            $this->title = __('Payright - Interest Free Payments', 'wc-gateway-payright');
+            $this->method_title = __('Payright - Interest Free Payments', 'wc-gateway-payright');
             $this->method_description = __('Payright redirects customers to Payright to enter their payment information', 'wc-gateway-payright');
 
             // Load the settings.
@@ -539,25 +545,25 @@ function wc_payright_gateway_init()
             $this->init_settings();
 
             // Define user set variables
-            $this->enabled          = $this->get_option('enabled');
-            $this->title            = 'Payright - Buy now pay later';
-            $this->username         = $this->get_option('username');
-            $this->password         = $this->get_option('password');
-            $this->client_id        = $this->get_option('client_id');
-            $this->client_secret    = $this->get_option('client_secret');
+            $this->enabled = $this->get_option('enabled');
+            $this->title = 'Payright - Buy now pay later';
+            $this->username = $this->get_option('username');
+            $this->password = $this->get_option('password');
+            $this->client_id = $this->get_option('client_id');
+            $this->client_secret = $this->get_option('client_secret');
             $this->merchantusername = $this->get_option('merchantusername');
             $this->merchantpassword = $this->get_option('merchantpassword');
-            $this->grant_type       = $this->get_option('grant_type');
-            $this->minamount        = $this->get_option('minamount');
+            $this->grant_type = $this->get_option('grant_type');
+            $this->minamount = $this->get_option('minamount');
 
-            $this->sandbox             = $this->get_option('sandbox');
-            $this->instructions        = $this->get_option('instructions');
-            $this->installments        = $this->get_option('installments');
-            $this->listinstallments    = $this->get_option('listinstallments');
-            $this->frontinstallments   = $this->get_option('frontinstallments');
+            $this->sandbox = $this->get_option('sandbox');
+            $this->instructions = $this->get_option('instructions');
+            $this->installments = $this->get_option('installments');
+            $this->listinstallments = $this->get_option('listinstallments');
+            $this->frontinstallments = $this->get_option('frontinstallments');
             $this->relatedinstallments = $this->get_option('relatedinstallments');
-            $this->moduleOverride      = $this->get_option('moduleOverride');
-            $this->customCss           = $this->get_option('customCss');
+            $this->moduleOverride = $this->get_option('moduleOverride');
+            $this->customCss = $this->get_option('customCss');
             // Actions
             add_action('woocommerce_update_options_payment_gateways_' . $this->id, array($this, 'process_admin_options'));
 
@@ -570,135 +576,135 @@ function wc_payright_gateway_init()
         {
             $this->form_fields = apply_filters('wc_payright_form_fields', array(
 
-                'enabled'             => array(
-                    'title'       => __('Enable/Disable', 'wc-gateway-payright'),
-                    'type'        => 'checkbox',
-                    'label'       => __('Enable Payright', 'wc-gateway-payright'),
-                    'default'     => 'No',
+                'enabled' => array(
+                    'title' => __('Enable/Disable', 'wc-gateway-payright'),
+                    'type' => 'checkbox',
+                    'label' => __('Enable Payright', 'wc-gateway-payright'),
+                    'default' => 'No',
                     'description' => __('plugin may be automatically disabled if cart or product price is less than minimum amount.', 'wc-gateway-payright'),
-                    'desc_tip'    => true,
-                ),
-
-                'sandbox'             => array(
-                    'title'    => __('Sandbox', 'wc-gateway-payright'),
-                    'type'     => 'checkbox',
-                    'default'  => 'no',
                     'desc_tip' => true,
                 ),
 
-                'title'               => array(
-                    'title'    => __('Title', 'wc-gateway-payright'),
-                    'type'     => 'text',
+                'sandbox' => array(
+                    'title' => __('Sandbox', 'wc-gateway-payright'),
+                    'type' => 'checkbox',
+                    'default' => 'no',
+                    'desc_tip' => true,
+                ),
+
+                'title' => array(
+                    'title' => __('Title', 'wc-gateway-payright'),
+                    'type' => 'text',
                     'disabled' => true,
-                    'value'    => 'Payright - Buy now pay later',
-                    'default'  => __('Payright', 'wc-gateway-payright'),
+                    'value' => 'Payright - Buy now pay later',
+                    'default' => __('Payright', 'wc-gateway-payright'),
                     'desc_tip' => true,
                 ),
 
-                'username'            => array(
-                    'title'       => __('API Username', 'wc-gateway-payright'),
-                    'type'        => 'text',
+                'username' => array(
+                    'title' => __('API Username', 'wc-gateway-payright'),
+                    'type' => 'text',
 
-                    'default'     => __('', 'wc-gateway-payright'),
+                    'default' => __('', 'wc-gateway-payright'),
                     'placeholder' => __('example@domain.com', 'wc-gateway-payright'),
-                    'desc_tip'    => true,
+                    'desc_tip' => true,
                 ),
-                'password'            => array(
-                    'title'    => __('API Password', 'wc-gateway-payright'),
-                    'type'     => 'password',
-                    'default'  => __('', 'wc-gateway-payright'),
+                'password' => array(
+                    'title' => __('API Password', 'wc-gateway-payright'),
+                    'type' => 'password',
+                    'default' => __('', 'wc-gateway-payright'),
                     'desc_tip' => true,
                 ),
 
-                'client_id'           => array(
-                    'title'    => __('Client ID', 'wc-gateway-payright'),
-                    'type'     => 'text',
+                'client_id' => array(
+                    'title' => __('Client ID', 'wc-gateway-payright'),
+                    'type' => 'text',
 
-                    'default'  => __('', 'wc-gateway-payright'),
+                    'default' => __('', 'wc-gateway-payright'),
                     'desc_tip' => true,
                 ),
-                'client_secret'       => array(
-                    'title'    => __('API Key', 'wc-gateway-payright'),
-                    'type'     => 'text',
+                'client_secret' => array(
+                    'title' => __('API Key', 'wc-gateway-payright'),
+                    'type' => 'text',
 
-                    'default'  => __('', 'wc-gateway-payright'),
+                    'default' => __('', 'wc-gateway-payright'),
                     'desc_tip' => true,
                 ),
-                'merchant_details'    => array(
-                    'title'       => __('Merchant Details', 'wc-gateway-payright'),
-                    'type'        => 'title',
+                'merchant_details' => array(
+                    'title' => __('Merchant Details', 'wc-gateway-payright'),
+                    'type' => 'title',
 
                     'description' => __('Enter your details.', 'wc-gateway-payright'),
                 ),
-                'merchantusername'    => array(
-                    'title'    => __('Merchant Username', 'wc-gateway-payright'),
-                    'type'     => 'text',
+                'merchantusername' => array(
+                    'title' => __('Merchant Username', 'wc-gateway-payright'),
+                    'type' => 'text',
 
-                    'default'  => __('', 'wc-gateway-payright'),
+                    'default' => __('', 'wc-gateway-payright'),
                     'desc_tip' => true,
                 ),
-                'merchantpassword'    => array(
-                    'title'    => __('Merchant Password', 'wc-gateway-payright'),
-                    'type'     => 'password',
+                'merchantpassword' => array(
+                    'title' => __('Merchant Password', 'wc-gateway-payright'),
+                    'type' => 'password',
 
-                    'default'  => __('', 'wc-gateway-payright'),
+                    'default' => __('', 'wc-gateway-payright'),
                     'desc_tip' => true,
                 ),
-                'minamount'           => array(
-                    'title'       => __('Minimum Amount', 'wc-gateway-payright'),
-                    'type'        => 'text',
+                'minamount' => array(
+                    'title' => __('Minimum Amount', 'wc-gateway-payright'),
+                    'type' => 'text',
                     'description' => __('This amount determines if payright is enabled or not on Checkout and Product page', 'wc-gateway-payright'),
-                    'default'     => __('5', 'wc-gateway-payright'),
-                    'desc_tip'    => true,
+                    'default' => __('5', 'wc-gateway-payright'),
+                    'desc_tip' => true,
                 ),
 
-                'installments'        => array(
-                    'title'   => __('Show Payright instalments information on Product Page', 'wc-gateway-payright'),
-                    'type'    => 'select',
+                'installments' => array(
+                    'title' => __('Show Payright instalments information on Product Page', 'wc-gateway-payright'),
+                    'type' => 'select',
                     'options' => array(
                         'optionOne' => __('Yes'),
                         'optionTwo' => __('No')),
                     'default' => 'optionOne',
                 ),
-                'listinstallments'    => array(
-                    'title'   => __('Show Payright instalments information on Shop Page', 'wc-gateway-payright'),
-                    'type'    => 'select',
+                'listinstallments' => array(
+                    'title' => __('Show Payright instalments information on Shop Page', 'wc-gateway-payright'),
+                    'type' => 'select',
                     'options' => array(
                         'optionOne' => __('Yes'),
                         'optionTwo' => __('No')),
                     'default' => 'optionOne',
                 ),
-                'frontinstallments'   => array(
-                    'title'   => __('Show Payright instalments information on Front Page', 'wc-gateway-payright'),
-                    'type'    => 'select',
+                'frontinstallments' => array(
+                    'title' => __('Show Payright instalments information on Front Page', 'wc-gateway-payright'),
+                    'type' => 'select',
                     'options' => array(
                         'optionOne' => __('Yes'),
                         'optionTwo' => __('No')),
                     'default' => 'optionOne',
                 ),
                 'relatedinstallments' => array(
-                    'title'   => __('Show Payright instalments information on Related Products', 'wc-gateway-payright'),
-                    'type'    => 'select',
+                    'title' => __('Show Payright instalments information on Related Products', 'wc-gateway-payright'),
+                    'type' => 'select',
                     'options' => array(
                         'optionOne' => __('Yes'),
                         'optionTwo' => __('No')),
                     'default' => 'optionOne',
                 ),
-                'moduleOverride'      => array(
-                    'title'       => __('Module overide CSS', 'wc-gateway-payright'),
-                    'type'        => 'textarea',
+                'moduleOverride' => array(
+                    'title' => __('Module overide CSS', 'wc-gateway-payright'),
+                    'type' => 'textarea',
                     'description' => __('Enter your class or id of the element for your sticky header or element that overrides payright pop up'),
-                    'default'     => __('', 'wc-gateway-payright'),
+                    'default' => __('', 'wc-gateway-payright'),
                     'placeholder' => __('Enter your class or id of the element for your sticky header or element that overrides payright pop up for example: .classOne #elementId', 'wc-gateway-payright'),
-                    'desc_tip'    => true,
+                    'desc_tip' => true,
                 ),
-                'customCss'           => array(
-                    'title'       => __('Custom CSS', 'wc-gateway-payright'),
-                    'type'        => 'textarea',
+                'customCss' => array(
+                    'title' => __('Custom CSS', 'wc-gateway-payright'),
+                    'type' => 'textarea',
                     'description' => __('Enter your custom css'),
-                    'default'     => __('', 'wc-gateway-payright'),
+                    'default' => __('', 'wc-gateway-payright'),
                     'placeholder' => __('Enter your CSS here', 'wc-gateway-payright'),
-                    'desc_tip'    => true,
+                    'desc_tip' => true,
                 ),
 
             ));
@@ -713,15 +719,21 @@ function wc_payright_gateway_init()
          */
         public function get_request_url($order)
         {
-            $this->endpoint                   = constant("PAYRIGHT_ENDPOINT");
-            $cart_total                       = WC()->cart->total;
-            $payright_api_call                  = new Payright_Call();
-            $auth                             = $payright_api_call->authenticate_payright_api_call();
-            $json                             = $payright_api_call->payright_transaction_configuration($auth['payrightAccessToken']);
+            $this->endpoint = constant("PAYRIGHT_ENDPOINT");
+            $this->endpoint = constant("PAYRIGHT_ENDPOINT");
+            if (WC()->cart->total === 0) {
+                $cart_total = $order->get_total();
+            } else {
+                $cart_total = WC()->cart->total;
+            }
+
+            $payright_api_call = new Payright_Call();
+            $auth = $payright_api_call->authenticate_payright_api_call();
+            $json = $payright_api_call->payright_transaction_configuration($auth['payrightAccessToken']);
             list($resultecomm, $resultconfig) = $payright_api_call->payright_initialize_transaction($json, $cart_total, $order->get_order_number(), $auth['payrightAccessToken']);
             if (!isset($resultecomm)) {
                 return array(
-                    'result'   => 'failure',
+                    'result' => 'failure',
                     'messages' => 'Payright error',
                 );
 
@@ -745,7 +757,7 @@ function wc_payright_gateway_init()
             $order->reduce_order_stock();
 
             return array(
-                'result'   => 'success',
+                'result' => 'success',
                 'redirect' => $this->get_request_url($order),
 
             );
@@ -754,7 +766,7 @@ function wc_payright_gateway_init()
         public function get_icon()
         {
             $icon_html = " ";
-            $image_url  = plugin_dir_url(__FILE__) . 'woocommerce/images/payrightlogo_rgb.png';
+            $image_url = plugin_dir_url(__FILE__) . 'woocommerce/images/payrightlogo_rgb.png';
 
             $icon_html .= '<img src="' . $image_url . '"" id="pricon" />';
             return apply_filters('woocommerce_gateway_icon', $icon_html, $this->id);
@@ -762,8 +774,15 @@ function wc_payright_gateway_init()
         }
         public function get_description()
         {
-            $cart_total = WC()->cart->total;
-            $result     = Payright_Call::payright_calculate_single_product_installment($cart_total);
+            if (WC()->cart->total === 0) {
+                $orderId = get_query_var('order-pay');
+                $order = wc_get_order($orderId);
+                $cart_total = $order->get_total();
+            } else {
+                $cart_total = WC()->cart->total;
+            }
+
+            $result = Payright_Call::payright_calculate_single_product_installment($cart_total);
 
             if (count($result) > 0 && $result[0] != '') {
                 $description = '<div class="bodybox">
