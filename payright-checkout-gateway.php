@@ -720,7 +720,6 @@ function wc_payright_gateway_init()
         public function get_request_url($order)
         {
             $this->endpoint = constant("PAYRIGHT_ENDPOINT");
-            $this->endpoint = constant("PAYRIGHT_ENDPOINT");
             if (WC()->cart->total === 0) {
                 $cart_total = $order->get_total();
             } else {
