@@ -156,13 +156,6 @@ function payright_modal_footer()
 // unsets payright_gateway
 function payright_filter_gateways($gateway_list)
 {
-    if (WC()->cart->total === 0) {
-        $orderId = get_query_var('order-pay');
-        $order = wc_get_order($orderId);
-        $cart_total = $order->get_total();
-    } else {
-        $cart_total = WC()->cart->total;
-    }
 
     $theme_options = get_option('woocommerce_payright_gateway_settings');
     $minamount = (float) $theme_options['minamount'];
@@ -175,6 +168,14 @@ function payright_filter_gateways($gateway_list)
 
     if (is_checkout()) {
 
+        if (WC()->cart->total === 0) {
+            $orderId = get_query_var('order-pay');
+            $order = wc_get_order($orderId);
+            $cart_total = $order->get_total();
+        } else {
+            $cart_total = WC()->cart->total;
+        }
+    
         $intiliaze_configuration_transaction = Payright_Call::authenticate_payright_api_call();
 
         if ($intiliaze_configuration_transaction == false) {
