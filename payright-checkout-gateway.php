@@ -97,24 +97,24 @@ function payright_shop_installments($price, $product)
 
                 if ((is_shop() || is_product_category()) && $listinstallments == 'optionOne') {
 
-                    $des = ("<div id='prshop'><p id='payrightshopinstallment'> Or " . $result[0] . " Fortnightly instalments of $" . $result[1] . " with<img id='payrightLogoimg' src='" . $image_url . "''></img></p>
+                    $des = ("<div id='prshop'><p id='payrightshopinstallment'> Or " . $result[0] . " Fortnightly instalments of $" . $result[1] . " with<img id='payrightLogoimg' src='" . $image_url . "'/></p>
                             </div>");
 
                 } elseif ($woocommerce_loop['name'] == 'related' && $related_product_instalments == 'optionOne' && is_product()) {
 
-                    $des = ("<div id='prshop'><p id='payrightshopinstallment'> Or " . $result[0] . " Fortnightly instalments of $" . $result[1] . " with<img id='payrightLogoimg' src='" . $image_url . "''></img></p>
+                    $des = ("<div id='prshop'><p id='payrightshopinstallment'> Or " . $result[0] . " Fortnightly instalments of $" . $result[1] . " with<img id='payrightLogoimg' src='" . $image_url . "'/></p>
                             </div>");
                 } elseif (is_home() && $front_page_instalments == 'optionOne') {
 
-                    $des = ("<div id='prshop'><p id='payrightshopinstallment'> Or " . $result[0] . " Fortnightly instalments of $" . $result[1] . " with<img id='payrightLogoimg' src='" . $image_url . "''></img></p>
+                    $des = ("<div id='prshop'><p id='payrightshopinstallment'> Or " . $result[0] . " Fortnightly instalments of $" . $result[1] . " with<img id='payrightLogoimg' src='" . $image_url . "'/></p>
                             </div>");
                 } elseif (is_front_page() && $front_page_instalments == 'optionOne') {
 
-                    $des = ("<div id='prshop'><p id='payrightshopinstallment'> Or " . $result[0] . " Fortnightly instalments of $" . $result[1] . " with<img id='payrightLogoimg' src='" . $image_url . "''></img></p>
+                    $des = ("<div id='prshop'><p id='payrightshopinstallment'> Or " . $result[0] . " Fortnightly instalments of $" . $result[1] . " with<img id='payrightLogoimg' src='" . $image_url . "'/></p>
                             </div>");
                 } elseif (is_product() && $product_instalments == 'optionOne' && $woocommerce_loop['name'] != 'related') {
 
-                    $des = ("</br> <div class='payrightProductInstalments'>Or " . $result[0] . " Fortnightly instalments of $" . $result[1] . " with<img id='productPayrightLogoImg' src='" . $image_url . "' ></img><a style='text-decoration: underline;' class='payright_opener654' id='payright_opener654'>Info</a></div>");
+                    $des = ("</br> <div class='payrightProductInstalments'>Or " . $result[0] . " Fortnightly instalments of $" . $result[1] . " with<img id='productPayrightLogoImg' src='" . $image_url . "' /><a style='text-decoration: underline;' class='payright_opener654' id='payright_opener654'>Info</a></div>");
                 } else {
 
                     $des = " ";
