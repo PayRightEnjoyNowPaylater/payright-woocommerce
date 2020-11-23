@@ -1,0 +1,157 @@
+
+@import url("https://fonts.googleapis.com/css?family=Quicksand:700|Roboto:400,700");
+.modal-popup.payright.modal-slide .modal-content {
+  padding: 0; }
+
+
+
+/*.payrightmodal{
+  padding-top: 0px;
+}*/
+.modal-slide .action-close {
+  float: right;
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 15px;
+  line-height: 40px;
+  text-align: center; }
+  .modal-slide .action-close:before {
+    vertical-align: middle; }
+
+#PayrightHowitWorksmodalPopup {
+  background-color: #FFF;
+  color: #251450;
+  font-family: 'Roboto', sans-serif !important;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+  padding: 1rem; }
+  #PayrightHowitWorksmodalPopup * {
+    box-sizing: border-box; }
+  #PayrightHowitWorksmodalPopup header {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0 2rem; }
+    #PayrightHowitWorksmodalPopup header img {
+      height: 55px; }
+  #PayrightHowitWorksmodalPopup h1, #PayrightHowitWorksmodalPopup h2, #PayrightHowitWorksmodalPopup h3, #PayrightHowitWorksmodalPopup .text, #PayrightHowitWorksmodalPopup .tellmemore {
+    font-family: 'Quicksand', sans-serif !important;
+    font-weight: 700;
+    letter-spacing: -0.03em; }
+  #PayrightHowitWorksmodalPopup h1, #PayrightHowitWorksmodalPopup .text-big {
+    color: #5431ff;
+    font-size: 18px !important;
+    line-height: 21px;
+    margin-bottom: 1rem; }
+  #PayrightHowitWorksmodalPopup h1 {
+    margin-bottom: 2rem; }
+  #PayrightHowitWorksmodalPopup .icon-container {
+    background-color: #24004f;
+    color: #FFF;
+    border-radius: 1rem;
+    border-bottom-left-radius: 0;
+    padding: 1rem;
+    margin: 0 auto 2rem; }
+    #PayrightHowitWorksmodalPopup .icon-container svg {
+      width: 40px;
+      height: 40px;
+      display: block; }
+    #PayrightHowitWorksmodalPopup .icon-container.light {
+      background-color: #eff1f6;
+      color: #24004f; }
+      #PayrightHowitWorksmodalPopup .icon-container.light svg {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto; }
+      #PayrightHowitWorksmodalPopup .icon-container.light li .text {
+        font-size: 15px;
+        line-height: 18px; }
+    #PayrightHowitWorksmodalPopup .icon-container ul {
+      margin: 0 auto;
+      padding: 0;
+      position: relative;
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap; }
+    #PayrightHowitWorksmodalPopup .icon-container li {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-basis: 50%;
+      flex-direction: column;
+      padding: 0;
+      margin: 0; }
+      #PayrightHowitWorksmodalPopup .icon-container li .icon {
+        text-align: center;
+        flex-grow: 0; }
+      #PayrightHowitWorksmodalPopup .icon-container li .text {
+        text-align: center;
+        padding: 1rem 1rem 0;
+        flex-grow: 1;
+        font-size: 12px;
+        line-height: 15px; }
+    @media (min-width: 825px) {
+      #PayrightHowitWorksmodalPopup .icon-container li {
+        flex-basis: 25%; } }
+    @media (max-width: 1390px) {
+      #PayrightHowitWorksmodalPopup .icon-container br {
+        display: none; } }
+  #PayrightHowitWorksmodalPopup h2 {
+    color: #FFF;
+    margin: 0 0 8px;
+    padding: 0;
+    font-size: 24px;
+    line-height: 27px; }
+  #PayrightHowitWorksmodalPopup h3 {
+    color: #24004f;
+    font-size: 15px;
+    line-height: 15px;
+    margin: 0 0 0.5rem; }
+  #PayrightHowitWorksmodalPopup .important-info {
+    margin: 0 auto 3rem;
+    max-width: 800px;
+    text-align: center; }
+    #PayrightHowitWorksmodalPopup .important-info p {
+      margin: 0;
+      padding: 0;
+      font-size: 12px;
+      line-height: 14.4px;
+      letter-spacing: -0.03em; }
+    #PayrightHowitWorksmodalPopup .important-info a {
+      color: #251450;
+      font-weight: 700;
+      text-decoration: underline; }
+      #PayrightHowitWorksmodalPopup .important-info a:hover {
+        text-decoration: none; }
+  #PayrightHowitWorksmodalPopup a.tellmemore {
+    background-color: #5431ff;
+    color: #FFF;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 1rem 4rem;
+    border-radius: 20px;
+    font-size: 18px;
+    line-height: 32px;
+    letter-spacing: normal;
+    display: inline-block;
+    margin-bottom: 2rem; }
+    #PayrightHowitWorksmodalPopup a.tellmemore:hover {
+      text-decoration: none; }
+
+@media only screen and (max-width: 767px) {
+  .modal-popup.modal-slide {
+    left: auto; }
+
+  .modal-popup.modal-slide._inner-scroll .modal-inner-wrap {
+    height: 100% !important; } }
+@media only screen and (max-width: 1023px) {
+  .modal-popup .modal-inner-wrap {
+    margin: 3rem auto;
+    width: 90%; } }
+
+/*# sourceMappingURL=payright-modal.css.map */
+
