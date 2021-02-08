@@ -63,7 +63,7 @@ function payright_start_session()
     Payright_Call::payright_get_session_value();
 }
 
-//adds instalments to shop,product, home and checkout pages
+//adds instalments to shop, product, home and checkout pages
 function payright_shop_installments($price, $product)
 {
     $des = '';
@@ -168,14 +168,16 @@ function payright_filter_gateways($gateway_list)
 
     if (is_checkout()) {
 
-        if (WC()->cart->total === 0) {
+        $cart_total = WC()->cart->total;
+
+        if ($cart_total === 0) {
             $orderId = get_query_var('order-pay');
             $order = wc_get_order($orderId);
-            $cart_total = $order->get_total();
-        } else {
-            $cart_total = WC()->cart->total;
+            if($order) {
+                $cart_total = $order->get_total();
+            }
         }
-    
+
         $intiliaze_configuration_transaction = Payright_Call::authenticate_payright_api_call();
 
         if ($intiliaze_configuration_transaction == false) {
