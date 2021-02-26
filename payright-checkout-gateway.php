@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: Payright
  * Description: A Payment gateway for Payright checkout
@@ -99,7 +100,6 @@ function payright_shop_installments($price, $product)
 
                     $des = ("<div id='prshop'><p id='payrightshopinstallment'> Or " . $result[0] . " Fortnightly instalments of $" . $result[1] . " with<img id='payrightLogoimg' src='" . $image_url . "'/></p>
                             </div>");
-
                 } elseif ($woocommerce_loop['name'] == 'related' && $related_product_instalments == 'optionOne' && is_product()) {
 
                     $des = ("<div id='prshop'><p id='payrightshopinstallment'> Or " . $result[0] . " Fortnightly instalments of $" . $result[1] . " with<img id='payrightLogoimg' src='" . $image_url . "'/></p>
@@ -173,7 +173,7 @@ function payright_filter_gateways($gateway_list)
         if ($cart_total === 0) {
             $orderId = get_query_var('order-pay');
             $order = wc_get_order($orderId);
-            if($order) {
+            if ($order) {
                 $cart_total = $order->get_total();
             }
         }
@@ -192,13 +192,11 @@ function payright_filter_gateways($gateway_list)
             } elseif ($transaction_configuration == false) {
                 unset($gateway_list['payright_gateway']);
             }
-
         }
 
         if (array_key_exists('payright_gateway', $gateway_list)) {
             $gateway_list['payright_gateway']->title = __('Payright - Buy now pay later', 'woocommerce');
         }
-
     }
 
     return $gateway_list;
@@ -350,7 +348,6 @@ function payright_redirect($request)
 
                 if (isset($plan_id_for_cancel) && $transaction_status != "Declined") {
                     Payright_Call::payright_cancel_plan($plan_id_for_cancel);
-
                 }
 
                 $url = $order->get_cancel_order_url_raw();
@@ -363,7 +360,6 @@ function payright_redirect($request)
                 wp_redirect($url);
                 exit;
             }
-
         } else {
             $order->update_status('cancelled', 'wc-gateway-payright');
             $url = $order->get_cancel_order_url_raw();
@@ -413,15 +409,15 @@ add_action('woocommerce_order_status_completed', 'pr_order_status_shipped_callba
 add_action('woocommerce_admin_order_data_after_order_details', 'payright_order_details_plan_id');
 function payright_order_details_plan_id($order)
 {
-    ?>
+?>
     <?php
-global $post;
+    global $post;
 
     $id = $order->get_id();
     $is_payright = get_post_meta($id, '_payment_method', true);
     $plan_name = get_post_meta($id, '_payright_plan_name', true);
 
-    if (($is_payright == 'payright_gateway') && (!empty($plan_name))):
+    if (($is_payright == 'payright_gateway') && (!empty($plan_name))) :
     ?>
         <br class="clear" />
         <h4>Plan Details</h4>
@@ -432,8 +428,8 @@ global $post;
 
         </div>
 
-            <?php
-endif;
+<?php
+    endif;
 }
 
 function payright_admin_notices()
@@ -484,7 +480,6 @@ function payright_current_screen($current_screen)
     if ('shop_order' == $current_screen->id) {
         add_action('admin_notices', 'payright_admin_notices');
     }
-
 }
 add_action('current_screen', 'payright_current_screen');
 add_action('admin_notices', 'payright_check_config');
@@ -569,7 +564,6 @@ function wc_payright_gateway_init()
             $this->customCss = $this->get_option('customCss');
             // Actions
             add_action('woocommerce_update_options_payment_gateways_' . $this->id, array($this, 'process_admin_options'));
-
         }
 
         /**
@@ -666,7 +660,8 @@ function wc_payright_gateway_init()
                     'type' => 'select',
                     'options' => array(
                         'optionOne' => __('Yes'),
-                        'optionTwo' => __('No')),
+                        'optionTwo' => __('No')
+                    ),
                     'default' => 'optionOne',
                 ),
                 'listinstallments' => array(
@@ -674,7 +669,8 @@ function wc_payright_gateway_init()
                     'type' => 'select',
                     'options' => array(
                         'optionOne' => __('Yes'),
-                        'optionTwo' => __('No')),
+                        'optionTwo' => __('No')
+                    ),
                     'default' => 'optionOne',
                 ),
                 'frontinstallments' => array(
@@ -682,7 +678,8 @@ function wc_payright_gateway_init()
                     'type' => 'select',
                     'options' => array(
                         'optionOne' => __('Yes'),
-                        'optionTwo' => __('No')),
+                        'optionTwo' => __('No')
+                    ),
                     'default' => 'optionOne',
                 ),
                 'relatedinstallments' => array(
@@ -690,7 +687,8 @@ function wc_payright_gateway_init()
                     'type' => 'select',
                     'options' => array(
                         'optionOne' => __('Yes'),
-                        'optionTwo' => __('No')),
+                        'optionTwo' => __('No')
+                    ),
                     'default' => 'optionOne',
                 ),
                 'moduleOverride' => array(
@@ -723,10 +721,12 @@ function wc_payright_gateway_init()
         public function get_request_url($order)
         {
             $this->endpoint = constant("PAYRIGHT_ENDPOINT");
-            if (WC()->cart->total === 0) {
-                $cart_total = $order->get_total();
-            } else {
-                $cart_total = WC()->cart->total;
+            $cart_total = WC()->cart->total;
+
+            if ($cart_total === 0) {
+                if ($order) {
+                    $cart_total = $order->get_total();
+                }
             }
 
             $payright_api_call = new Payright_Call();
@@ -738,11 +738,9 @@ function wc_payright_gateway_init()
                     'result' => 'failure',
                     'messages' => 'Payright error',
                 );
-
             } else {
                 return $this->endpoint . $resultecomm;
             }
-
         }
 
         /**
@@ -776,12 +774,14 @@ function wc_payright_gateway_init()
         }
         public function get_description()
         {
-            if (WC()->cart->total === 0) {
+            $cart_total = WC()->cart->total;
+            if ($cart_total === 0) {
                 $orderId = get_query_var('order-pay');
                 $order = wc_get_order($orderId);
-                $cart_total = $order->get_total();
-            } else {
-                $cart_total = WC()->cart->total;
+
+                if ($order) {
+                    $cart_total = $order->get_total();
+                }
             }
 
             $result = Payright_Call::payright_calculate_single_product_installment($cart_total);
