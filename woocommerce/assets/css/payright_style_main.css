@@ -8,84 +8,85 @@
 }*/
 
 h1.payRightH1 {
-    font-size: inherit;
-    line-height: inherit;
-    text-transform: uppercase;
-    font-weight: 400;
-    color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: inherit;
 }
 h2.payRightH2 {
-    font-size: inherit;
-    margin: 0px;
-    text-align: center;
-    font-weight: 500;
+  font-size: inherit;
+  margin: 0px;
+  text-align: center;
+  font-weight: 500;
 }
 .insideColumns h2.payRightH2why {
-    font-size: 32px;
-    margin: 25px 0 35px;
-    text-align: center;
-    /*padding-bottom: 20px;*/
+  font-size: 32px;
+  margin: 25px 0 35px;
+  text-align: center;
+  /*padding-bottom: 20px;*/
 }
 .insideColumns h4.payRightH4 {
-    font-weight: 500;
+  font-weight: 500;
 }
 h4.payRightH4 {
-    font-size: 22px;
-    text-align: center;
+  font-size: 22px;
+  text-align: center;
 }
 h5.payRightH5 {
-    font-weight: 900;
-    font-size: 18px;
+  font-weight: 900;
+  font-size: 18px;
 }
 p.payRightPayment {
-    font-size: inherit;
-    text-align: center;
-    color: inherit;
-    margin-bottom: 40px;
-    margin-top: 0;
+  font-size: inherit;
+  text-align: center;
+  color: inherit;
+  margin-bottom: 40px;
+  margin-top: 0;
 }
 p.payRightp {
-    font-size: 18px;
-    text-align: center;
-    color: inherit;
+  font-size: 18px;
+  text-align: center;
+  color: inherit;
 }
 
 #payrightmargin {
-    padding-bottom: 10px;
+  padding-bottom: 10px;
 }
-#payrightdeposit, #payrightmargin {
-    text-align: left;
-    padding-left: 0px;
-    font-size: inherit;
+#payrightdeposit,
+#payrightmargin {
+  text-align: left;
+  padding-left: 0px;
+  font-size: inherit;
 }
 #payrightdeposit {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 /*a {
 	color: #275f95;
 }*/
 
-.payRight_columns>.insideColumns>button.payrightbutton {
-    background-color: #275f95;
-    color: #ffffff;
-    font-size: 28px;
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    text-transform: none;
-    border-color: white;
+.payRight_columns > .insideColumns > button.payrightbutton {
+  background-color: #275f95;
+  color: #ffffff;
+  font-size: 28px;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  text-transform: none;
+  border-color: white;
 }
 span.installments {
-    color: inherit;
+  color: inherit;
 }
 
 .payRight_container {
-    width: auto;
-    margin: auto;
+  width: auto;
+  margin: auto;
 }
 #tellmemore {
-    color: inherit;
-    text-decoration-line: none;
+  color: inherit;
+  text-decoration-line: none;
 }
 /*button {
 	background-color: #275f95;
@@ -93,98 +94,97 @@ span.installments {
 	font-size: 28px;
 	width: 100%;
 	text-align: center;
-	padding: 10px; 
+	padding: 10px;
 }
 */
 
-
 .bodybox {
-    margin: 0px;
+  margin: 0px;
 }
 .payRight_container {
-    width: auto;
-    margin: auto;
+  width: auto;
+  margin: auto;
 }
 .insideColumns p.payRightpwhy {
-    font-weight: 900;
-    font-size: inherit;
-    line-height: inherit;
-    color: #275f95;
-    text-align: center;
+  font-weight: 900;
+  font-size: inherit;
+  line-height: inherit;
+  color: #275f95;
+  text-align: center;
 }
 .payRight_points p {
-    font-weight: 900;
-    font-size: 22px;
-    line-height: inherit;
+  font-weight: 900;
+  font-size: 22px;
+  line-height: inherit;
 }
 .payRight_points {
-    margin: 30px 0 30px 0 !important;
+  margin: 30px 0 30px 0 !important;
 }
 .pointsCenter {
-    border-left: 2px solid #b2b3b6;
-    border-right: 2px solid #b2b3b6;
+  border-left: 2px solid #b2b3b6;
+  border-right: 2px solid #b2b3b6;
 }
 
 .insideColumns p.payRightpimportant {
-    color: inherit;
-    text-align: left;
-    font-size: 16px;
+  color: inherit;
+  text-align: left;
+  font-size: 16px;
 }
 @media only screen and (max-width: 770px) {
-    h1.payRightH1 {
-        text-align: center;
-        font-size: inherit;
-    }
-    h2.payRightH2 {
-        text-align: center;
-        font-size: inherit;
-        line-height: inherit;
-    }
-    p.payRightPayment {
-        font-size: inherit;
-        line-height: inherit;
-        margin-top: 0;
-    }
-    .imgCol {
-        text-align: center;
-    }
-    .imgCol img {
-        width: 40%;
-    }
-    .PointsInBlueStrip {
-        padding-left: 15%;
-    }
-    .pointsCenter {
-        border-left: 0px solid #b2b3b6;
-        border-right: 0px solid #b2b3b6;
-        border-top: 2px solid #b2b3b6;
-        border-bottom: 2px solid #b2b3b6;
-    }
-   
-    .headerLast {
-        height: 0px;
-    }
-    .imgPayRight {
-        text-align: center;
-    }
-    .imgPayRight img {
-        width: 60%;
-    }
-    
-    #payRightp {
-        color: white;
-    }
+  h1.payRightH1 {
+    text-align: center;
+    font-size: inherit;
+  }
+  h2.payRightH2 {
+    text-align: center;
+    font-size: inherit;
+    line-height: inherit;
+  }
+  p.payRightPayment {
+    font-size: inherit;
+    line-height: inherit;
+    margin-top: 0;
+  }
+  .imgCol {
+    text-align: center;
+  }
+  .imgCol img {
+    width: 40%;
+  }
+  .PointsInBlueStrip {
+    padding-left: 15%;
+  }
+  .pointsCenter {
+    border-left: 0px solid #b2b3b6;
+    border-right: 0px solid #b2b3b6;
+    border-top: 2px solid #b2b3b6;
+    border-bottom: 2px solid #b2b3b6;
+  }
+
+  .headerLast {
+    height: 0px;
+  }
+  .imgPayRight {
+    text-align: center;
+  }
+  .imgPayRight img {
+    width: 60%;
+  }
+
+  #payRightp {
+    color: white;
+  }
 }
 @media only screen and (min-width: 771px) {
-    .bodybox {
-        padding: 0 40px 0 40px;
-    }
-    h2.payRightH2 {
-        text-align: center;
-        font-size: inherit;
-        line-height: inherit;
-    }
-    #payRightp {
-        color: inherit;
-    }
+  .bodybox {
+    padding: 0 40px 0 40px;
+  }
+  h2.payRightH2 {
+    text-align: center;
+    font-size: inherit;
+    line-height: inherit;
+  }
+  #payRightp {
+    color: inherit;
+  }
 }
