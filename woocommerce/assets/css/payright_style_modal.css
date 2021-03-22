@@ -18,32 +18,11 @@
         transform: rotate(359deg);
     }
 }
-
-#prshop {
-    margin-top: 1px;
-    margin-bottom: 1px;
-    white-space: normal;
-    line-height: normal;
-    width: 100%;
-}
 #pricon {
     max-height: 3em !important;
     margin-left: 0px;
     vertical-align: middle;
 }
-#payrightLogo {
-    /* height: auto;
-  width: 30%;*/
-    /*  display: -webkit-inline-box;
-  float: none;*/
-    /*display: inline-block;*/
-    float: none !important;
-    vertical-align: middle !important;
-    content: url('../../images/payrightlogo_rgb.png');
-    max-width: 40%;
-    max-height: 2.5em !important;
-}
-
 #productPayrightLogo{
     content: url('../../images/payrightlogo_rgb.png');
     max-height: 3em !important;
@@ -51,8 +30,7 @@
     display: inline-block !important;
     border: 0px !important;
 }
-
-#payrightLogoimg {
+.payrightLogoimg {
     display: inline-block !important;
     float: none !important;
     vertical-align: middle !important;
@@ -61,35 +39,32 @@
     width: auto !important;
     height: auto !important;
 }
-
-
-#productPayrightLogoImg {
+.productPayrightLogoImg {
     max-height: 3em !important;
     vertical-align: middle !important;
     display: inline-block !important;
     border: 0px !important;
 }
-
-#payrightshopinstallment {
+.payrightshopinstallment {
     font-size: 12px;
     color: inherit;
     margin-top: 0px;
-    /* display: -webkit-box;*/
 }
 #opener {
     color: #275f95;
     text-decoration: underline;
        cursor: pointer;
 }
-
- h1.payRightH1, h2.payRightH2, h3.payRightH3, h4.payRightH4, h5.payRightH5, h6.payRightH6, {
+h1.payRightH1, h2.payRightH2, h3.payRightH3, h4.payRightH4, h5.payRightH5, h6.payRightH6 {
     margin: 0;
     padding: 0;
 }
 .prshop {
-    text-align: -webkit-center;
-    color: #316fa9;
-    display: -webkit-box;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    white-space: normal;
+    line-height: normal;
+    width: 100%;
 }
 .order-status .status-shipped {
     color: white;
