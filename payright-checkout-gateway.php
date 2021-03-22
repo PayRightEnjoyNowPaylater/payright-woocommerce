@@ -6,7 +6,7 @@
  * Author: Payright
  * Author URI: https://www.payright.com.au/
  * Text Domain: wc-gateway-payright
- * Version: 1.1.2
+ * Version: 1.1.3
  *
  * Copyright: (c) 2019 Payright
  *
@@ -62,6 +62,9 @@ function payright_start_session()
         session_start();
     }
     Payright_Call::payright_get_session_value();
+    // Make sure we close the session after writing.
+    // Ref: https://www.tutorialspoint.com/php/php_function_session_write_close.htm
+    session_write_close();
 }
 
 //adds instalments to shop,product, home and checkout pages
