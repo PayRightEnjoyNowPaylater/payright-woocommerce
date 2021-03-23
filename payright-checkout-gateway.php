@@ -6,7 +6,7 @@
  * Author: Payright
  * Author URI: https://www.payright.com.au/
  * Text Domain: wc-gateway-payright
- * Version: 1.1.3
+ * Version: 1.1.4
  *
  * Copyright: (c) 2019 Payright
  *
