@@ -459,7 +459,7 @@ class Payright_Call
                     $payment_processing_fee
                 );
 
-                $payrightResult = array($calculated_no_of_repayments, $CalculateRepayments, $get_min_deposit);
+                $payrightResult = array($calculated_no_of_repayments, $CalculateRepayments);
                 return $payrightResult;
 
             } else {
