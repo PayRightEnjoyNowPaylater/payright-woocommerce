@@ -541,29 +541,29 @@ a.tellmemore {
 }
 /* The Close Button */
 
-.close {
+.pr-model .close {
     color: white;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
-.close:hover, .close:focus {
+.pr-model .close:hover, .pr-model .close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
 }
-.modal-header {
+.pr-model .modal-header {
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
 }
-.modal-body {
+.pr-model .modal-body {
     padding: 2px 16px;
     height: auto;
     width: auto;
     margin: 10px;
 }
-.modal-footer {
+.pr-model .modal-footer {
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;

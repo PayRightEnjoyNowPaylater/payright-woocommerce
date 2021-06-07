@@ -6,7 +6,7 @@
  * Author: Payright
  * Author URI: https://www.payright.com.au/
  * Text Domain: wc-gateway-payright
- * Version: 2.0.5
+ * Version: 2.0.6
  *
  * Copyright: (c) 2019 Payright
  *
@@ -145,7 +145,7 @@ function payright_modal_footer()
     $output = ob_get_contents();
     ob_end_clean();
 
-    echo " <div id='payright_modal654' class='payrightmodal' role='dialog' class='modal-popup payright modal-slide _inner-scroll _show' aria-describedby='modal-content-1' data-role='modal' data-type='popup' tabindex='0' ><!-- Modal content -->" . $output . " </div>";
+    echo " <div id='payright_modal654' class='payrightmodal' role='dialog' class='modal-popup payright modal-slide _inner-scroll _show pr-model' aria-describedby='modal-content-1' data-role='modal' data-type='popup' tabindex='0' ><!-- Modal content -->" . $output . " </div>";
 }
 
 // unsets payright_gateway
@@ -240,9 +240,9 @@ add_action('wp_enqueue_scripts', 'payright_scripts', 5);
 function payright_styles()
 {
     // Register the style like this for a plugin:
-    wp_enqueue_style('payright_style_modal', plugins_url('woocommerce/assets/css/payright_style_modal.css', __FILE__), array(), '1.0.0', 'all');
-    wp_enqueue_style('payright_style_main', plugins_url('woocommerce/assets/css/payright_style_main.css', __FILE__), array(), '1.0.0', 'all');
-    wp_enqueue_style('prpopup', plugins_url('woocommerce/assets/css/payright-modal.css', __FILE__), array(), '1.0.0', 'all');
+    wp_enqueue_style('payright_style_modal', plugins_url('woocommerce/assets/css/payright_style_modal.css', __FILE__), array(), '1.0.1', 'all');
+    wp_enqueue_style('payright_style_main', plugins_url('woocommerce/assets/css/payright_style_main.css', __FILE__), array(), '1.0.1', 'all');
+    wp_enqueue_style('prpopup', plugins_url('woocommerce/assets/css/payright-modal.css', __FILE__), array(), '1.0.1', 'all');
 
     $theme_options = get_option('woocommerce_payright_gateway_settings');
     $custom_css = '';

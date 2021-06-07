@@ -1,6 +1,6 @@
 <!-- <div class="modal-inner-wrap" data-role="focusable-scope"> -->
 
-    <div class="modal-content" data-role="content" id="modal-content-1">
+    <div class="modal-content pr-model" data-role="content" id="modal-content-1">
         <!-- ***** START MODAL ***** -->
         <div class="payRight_container" id="PayrightHowitWorksmodalPopup">
         	<div id="close"><h1>x</h1></div>
